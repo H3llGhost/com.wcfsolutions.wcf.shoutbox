@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/page-menu.xsd">
+	<import>
+		<pagemenuitem name="wcf.footer.menu.shoutbox.entry.archives">
+			<iconmedium>shoutboxM.png</iconmedium>
+			<iconsmall>shoutboxS.png</iconsmall>
+			<link>index.php?page=ShoutboxEntryArchives</link>
+			<showorder>1</showorder>
+			<position>footer</position>
+			<permissions>user.shoutbox.canViewEntryArchives</permissions>
+			<options>module_shoutbox</options>
+		</pagemenuitem>
+	</import>
+</data>

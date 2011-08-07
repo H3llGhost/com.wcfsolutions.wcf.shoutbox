@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/group-options.xsd">
+	<import>
+		<categories>
+			<category name="user.shoutbox">
+				<parent>user</parent>
+				<options>module_shoutbox</options>
+			</category>
+			<category name="mod.shoutbox">
+				<parent>mod</parent>
+				<options>module_shoutbox</options>
+			</category>
+		</categories>
+		<options>
+			<option name="user.shoutbox.canViewShoutbox">
+				<categoryname>user.shoutbox</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="user.shoutbox.canViewEntryArchives">
+				<categoryname>user.shoutbox</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="user.shoutbox.canAddEntry">
+				<categoryname>user.shoutbox</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="user.shoutbox.maxEntryLength">
+				<categoryname>user.shoutbox</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>200</defaultvalue>
+			</option>
+			<option name="user.shoutbox.floodControlTime">
+				<categoryname>user.shoutbox</categoryname>
+				<optiontype>inverseinteger</optiontype>
+				<defaultvalue>30</defaultvalue>
+			</option>
+			<option name="user.shoutbox.canDeleteOwnEntry">
+				<categoryname>user.shoutbox</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="mod.shoutbox.canDeleteEntry">
+				<categoryname>mod.shoutbox</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+		</options>
+	</import>
+	<delete>
+		<option name="user.shoutbox.canEnterEntryArchives" />
+	</delete>
+</data>

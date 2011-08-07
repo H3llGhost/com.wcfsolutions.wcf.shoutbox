@@ -1,0 +1,1 @@
+ALTER TABLE wcf1_shoutbox_entry ADD ipAddress VARCHAR(15) NOT NULL DEFAULT '';

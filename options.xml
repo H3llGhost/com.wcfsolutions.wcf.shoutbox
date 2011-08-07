@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/options.xsd">
+	<import>
+		<categories>
+			<category name="shoutbox">
+				<options>module_shoutbox</options>
+			</category>
+			<category name="shoutbox.general">
+				<parent>shoutbox</parent>
+			</category>
+			<category name="shoutbox.entries">
+				<parent>shoutbox</parent>
+			</category>
+		</categories>
+		<options>
+			<option name="module_shoutbox">
+				<categoryname>module.content</categoryname>
+				<optiontype>boolean</optiontype>
+				<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="shoutbox_max_entries">
+				<categoryname>shoutbox.general</categoryname>
+				<optiontype>integer</optiontype>
+			 	<defaultvalue>20</defaultvalue>
+			</option>
+			<option name="shoutbox_reload_interval">
+				<categoryname>shoutbox.general</categoryname>
+				<optiontype>integer</optiontype>
+			 	<defaultvalue>10</defaultvalue>
+			</option>
+			<option name="shoutbox_enable_smiley_list">
+				<categoryname>shoutbox.general</categoryname>
+				<optiontype>boolean</optiontype>
+			 	<defaultvalue>1</defaultvalue>
+			</option>
+			<option name="shoutbox_entry_sort_order">
+				<categoryname>shoutbox.entries</categoryname>
+				<optiontype>select</optiontype>
+				<defaultvalue><![CDATA[DESC]]></defaultvalue>
+				<selectoptions><![CDATA[ASC:wcf.global.sortOrder.ascending
+DESC:wcf.global.sortOrder.descending]]></selectoptions>
+			</option>
+			<option name="shoutbox_entry_archives_sort_field">
+				<categoryname>shoutbox.entries</categoryname>
+				<optiontype>select</optiontype>
+				<defaultvalue>time</defaultvalue>
+				<selectoptions><![CDATA[entryID:wcf.shoutbox.entry.entryID
+username:wcf.shoutbox.entry.username
+message:wcf.shoutbox.entry.message
+time:wcf.shoutbox.entry.time]]></selectoptions>
+			</option>
+			<option name="shoutbox_entry_archives_sort_order">
+				<categoryname>shoutbox.entries</categoryname>
+				<optiontype>select</optiontype>
+				<defaultvalue><![CDATA[DESC]]></defaultvalue>
+				<selectoptions><![CDATA[ASC:wcf.global.sortOrder.ascending
+DESC:wcf.global.sortOrder.descending]]></selectoptions>
+			</option>
+			<option name="shoutbox_unneeded_update_limit">
+				<categoryname>shoutbox.general</categoryname>
+				<optiontype>integer</optiontype>
+			 	<defaultvalue>5</defaultvalue>
+			</option>
+			<option name="empty_shoutbox_cycle">
+				<categoryname>shoutbox.general</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>0</defaultvalue>
+			</option>
+			<option name="activity_points_per_shoutbox_entry">
+				<categoryname>shoutbox.entries</categoryname>
+				<optiontype>integer</optiontype>
+				<defaultvalue>5</defaultvalue>
+			</option>
+		</options>
+	</import>
+	<delete>
+		<option name="shoutbox_height" />
+	</delete>
+</data>

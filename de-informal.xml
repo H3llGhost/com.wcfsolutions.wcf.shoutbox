@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com/XSD/language.xsd" languagecode="de-informal">
+	<category name="wcf.acp.group">
+		<item name="wcf.acp.group.option.category.admin.shoutbox"><![CDATA[Shoutbox]]></item>
+		<item name="wcf.acp.group.option.category.admin.shoutbox.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.mod.shoutbox"><![CDATA[Shoutbox]]></item>
+		<item name="wcf.acp.group.option.category.mod.shoutbox.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.category.user.shoutbox"><![CDATA[Shoutbox]]></item>
+		<item name="wcf.acp.group.option.category.user.shoutbox.description"><![CDATA[]]></item>
+		<item name="wcf.acp.group.option.mod.shoutbox.canDeleteEntry"><![CDATA[Kann Einträge löschen]]></item>
+		<item name="wcf.acp.group.option.mod.shoutbox.canDeleteEntry.description"><![CDATA[Mitglieder dieser Benutzergruppe können Einträge löschen.]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.canAddEntry"><![CDATA[Kann Eintrag hinzufügen]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.canAddEntry.description"><![CDATA[Mitglieder dieser Benutzergruppe können Einträge zur Shoutbox hinzufügen.]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.canDeleteOwnEntry"><![CDATA[Kann eigene Einträge löschen]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.canDeleteOwnEntry.description"><![CDATA[Mitglieder dieser Benutzergruppe können eigene Einträge löschen.]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.canViewEntryArchives"><![CDATA[Kann Shoutbox Eintragsarchiv betreten]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.canViewEntryArchives.description"><![CDATA[Mitglieder dieser Benutzergruppe können das Shoutbox Eintragsarchiv betreten.]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.canViewShoutbox"><![CDATA[Kann Shoutbox sehen]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.canViewShoutbox.description"><![CDATA[Mitglieder dieser Benutzergruppe können die Shoutbox sehen.]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.floodControlTime"><![CDATA[Flood-Control Zeit]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.floodControlTime.description"><![CDATA[Wie viele Sekunden müssen Mitglieder dieser Benutzergruppe nach einem geschriebenen Eintrag warten, bis sie einen weiteren schreiben können?]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.maxEntryLength"><![CDATA[Maximale Eintragslänge]]></item>
+		<item name="wcf.acp.group.option.user.shoutbox.maxEntryLength.description"><![CDATA[Wie viele Zeichen kann ein Shoutbox-Eintrag von Mitgliedern dieser Benutzergruppe maximal haben?]]></item>
+	</category>
+	<category name="wcf.acp.option">
+		<item name="wcf.acp.option.activity_points_per_shoutbox_entry"><![CDATA[Aktivitätspunkte pro Eintrag]]></item>
+		<item name="wcf.acp.option.activity_points_per_shoutbox_entry.description"><![CDATA[Anzahl der Punkte, die ein Benutzer für das Hinzufügen eines Shoutbox-Eintrags erhält]]></item>
+		<item name="wcf.acp.option.category.shoutbox"><![CDATA[Shoutbox]]></item>
+		<item name="wcf.acp.option.category.shoutbox.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.shoutbox.entries"><![CDATA[Einträge]]></item>
+		<item name="wcf.acp.option.category.shoutbox.entries.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.category.shoutbox.general"><![CDATA[Allgemein]]></item>
+		<item name="wcf.acp.option.category.shoutbox.general.description"><![CDATA[]]></item>
+		<item name="wcf.acp.option.empty_shoutbox_cycle"><![CDATA[Shoutbox automatisch leeren]]></item>
+		<item name="wcf.acp.option.empty_shoutbox_cycle.description"><![CDATA[Nach wievielen Tagen sollen Einträge automatisch gelöscht werden? Trage bitte »0« ein, um die automatische Löschung gänzlich zu deaktivieren.]]></item>
+		<item name="wcf.acp.option.module_shoutbox"><![CDATA[Shoutbox]]></item>
+		<item name="wcf.acp.option.module_shoutbox.description"><![CDATA[Aktiviert die Shoutbox.]]></item>
+		<item name="wcf.acp.option.shoutbox_enable_smiley_list"><![CDATA[Smiley-Liste anzeigen]]></item>
+		<item name="wcf.acp.option.shoutbox_enable_smiley_list.description"><![CDATA[Soll die Smiley-Liste angezeigt werden?]]></item>
+		<item name="wcf.acp.option.shoutbox_entry_archives_sort_field"><![CDATA[Sortierung der Einträge im Archiv]]></item>
+		<item name="wcf.acp.option.shoutbox_entry_archives_sort_field.description"><![CDATA[Wonach sollen Einträge standardmäßig sortiert werden?]]></item>
+		<item name="wcf.acp.option.shoutbox_entry_archives_sort_order"><![CDATA[Sortierungsreihenfolge der Einträge im Archiv]]></item>
+		<item name="wcf.acp.option.shoutbox_entry_archives_sort_order.description"><![CDATA[In welcher Reihenfolge sollen Einträge im Archiv standardmäßig angezeigt werden?]]></item>
+		<item name="wcf.acp.option.shoutbox_entry_sort_order"><![CDATA[Sortierung]]></item>
+		<item name="wcf.acp.option.shoutbox_entry_sort_order.description"><![CDATA[Hier kannst du die Anzeigereihenfolge der Shoutbox-Einträge festlegen.]]></item>
+		<item name="wcf.acp.option.shoutbox_max_entries"><![CDATA[Maximale Einträge]]></item>
+		<item name="wcf.acp.option.shoutbox_max_entries.description"><![CDATA[Lege hier fest, wie viele Einträge maximal in der Shoutbox angezeigt werden sollen.]]></item>
+		<item name="wcf.acp.option.shoutbox_reload_interval"><![CDATA[Aktualisierungs-Intervall]]></item>
+		<item name="wcf.acp.option.shoutbox_reload_interval.description"><![CDATA[Hier kannst du festlegen, in welchen Zeitabständen die Shoutbox aktualisiert werden soll. Trage bitte »0« ein, um die Aktualisierung gänzlich zu deaktivieren.]]></item>
+		<item name="wcf.acp.option.shoutbox_unneeded_update_limit"><![CDATA[Aktualisierungs-Stop]]></item>
+		<item name="wcf.acp.option.shoutbox_unneeded_update_limit.description"><![CDATA[Nach wie vielen Aktualisierungen ohne neue Nachrichten soll die Aktualisierung für den aktuellen Seitenaufruf beendet werden? Trage bitte »0« ein, um den Aktualisierungs-Stop gänzlich zu deaktivieren.]]></item>
+	</category>
+	<category name="wcf.footer.menu">
+		<item name="wcf.footer.menu.shoutbox.entry.archives"><![CDATA[Shoutbox Archiv]]></item>
+	</category>
+	<category name="wcf.shoutbox">
+		<item name="wcf.shoutbox.entry.archives"><![CDATA[Shoutbox Eintragsarchiv]]></item>
+		<item name="wcf.shoutbox.entry.archives.count"><![CDATA[Ingesamt {#$items} {if $items == 1}Eintrag{else}Einträge{/if}]]></item>
+		<item name="wcf.shoutbox.entry.archives.count.noEntries"><![CDATA[Es sind noch keine Einträge vorhanden.]]></item>
+		<item name="wcf.shoutbox.entry.button.markAll"><![CDATA[Alle markieren]]></item>
+		<item name="wcf.shoutbox.entry.delete"><![CDATA[Eintrag löschen]]></item>
+		<item name="wcf.shoutbox.entry.delete.sure"><![CDATA[Willst du diesen Eintrag wirklich löschen?]]></item>
+		<item name="wcf.shoutbox.entry.deleteMarked.sure"><![CDATA[Willst du die markierten Einträge wirklich löschen?]]></item>
+		<item name="wcf.shoutbox.entry.entryID"><![CDATA[Eintrags-ID]]></item>
+		<item name="wcf.shoutbox.entry.error.floodControl"><![CDATA[Du hast bereits eine Nachricht innerhalb der letzten {$floodControlTime} Sekunden erstellt. Du kannst erst in {$waitingTime} Sekunden eine neue Nachricht erstellen.]]></item>
+		<item name="wcf.shoutbox.entry.error.message.empty"><![CDATA[Bitte gib eine Nachricht ein.]]></item>
+		<item name="wcf.shoutbox.entry.error.username.empty"><![CDATA[Bitte gib einen Benutzernamen ein.]]></item>
+		<item name="wcf.shoutbox.entry.message"><![CDATA[Nachricht]]></item>
+		<item name="wcf.shoutbox.entry.time"><![CDATA[Zeit]]></item>
+		<item name="wcf.shoutbox.entry.username"><![CDATA[Benutzername]]></item>
+		<item name="wcf.shoutbox.markedEntries"><![CDATA[this.count == 1 ? "Ein Eintrag markiert" : this.count+" Einträge markiert"]]></item>
+	</category>
+	<category name="wcf.usersOnline">
+		<item name="wcf.usersOnline.location.shoutboxEntryArchives"><![CDATA[<a href="index.php?page=ShoutboxEntryArchives{SID_ARG_2ND}">Shoutbox Archiv</a>]]></item>
+	</category>
+</language>
