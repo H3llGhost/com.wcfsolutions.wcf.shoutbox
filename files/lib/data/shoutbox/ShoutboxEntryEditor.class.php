@@ -29,11 +29,19 @@ class ShoutboxEntryEditor extends ShoutboxEntry {
 	 * @return	ShoutboxEntryEditor
 	 */
 	public static function create($userID, $username, $message) {
+		// insert shoutbox entry
 		$sql = "INSERT INTO	wcf".WCF_N."_shoutbox_entry
 					(userID, username, time, message, ipAddress)
 			VALUES		(".$userID.", '".escapeString($username)."', ".TIME_NOW.", '".escapeString($message)."', '".escapeString(WCF::getSession()->ipAddress)."')";
 		WCF::getDB()->sendQuery($sql);
 		
+		// update user activity points
+		if (ACTIVITY_POINTS_PER_SHOUTBOX_ENTRY && $userID) {
+			require_once(WCF_DIR.'lib/data/user/rank/UserRank.class.php');
+			UserRank::updateActivityPoints(ACTIVITY_POINTS_PER_SHOUTBOX_ENTRY, $userID);
+		}
+		
+		// return new shoutbox entry
 		$entryID = WCF::getDB()->getInsertID("wcf".WCF_N."_shoutbox_entry", 'entryID');
 		return new ShoutboxEntryEditor($entryID);
 	}

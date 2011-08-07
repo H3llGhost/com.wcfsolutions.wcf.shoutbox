@@ -6,30 +6,33 @@
 var ShoutboxEntryListEdit = Class.create({
 	/**
 	 * Inits ShoutboxEntryListEdit.
+	 * 
+	 * @param	Hash		data
+	 * @param	integer		count
 	 */
 	initialize: function(data, count) {
 		this.data = data;
 		this.count = count;
 		
-		// get parent object
+		// init parent object
 		this.parentObject = new InlineListEdit('shoutboxEntry', this);
 	},	
 	
 	/**
 	 * Show the status of an entry.
+	 * 
+	 * @param	integer		id
 	 */
 	showStatus: function(id) {
 		var entry = this.data.get(id);
 		
 		// get row
 		var row = $('shoutboxEntryRow'+id);
-		
-		// update css class
 		if (row) {
 			// remove all classes
 			row.removeClassName('marked');
 			
-			// marked
+			// add marked class
 			if (entry.isMarked) {
 				row.addClassName('marked');
 			}
@@ -38,6 +41,8 @@ var ShoutboxEntryListEdit = Class.create({
 	
 	/**
 	 * Saves the marked status.
+	 * 
+	 * @param	string		data
 	 */
 	saveMarkedStatus: function(data) {
 		new Ajax.Request('index.php?action=ShoutboxEntryMark&t='+SECURITY_TOKEN+SID_ARG_2ND, {
@@ -48,6 +53,9 @@ var ShoutboxEntryListEdit = Class.create({
 	
 	/**
 	 * Returns a list of the edit options for the edit menu.
+	 * 
+	 * @param	integer		id
+	 * @return	Array
 	 */
 	getEditOptions: function(id) {
 		return new Array();
@@ -55,6 +63,8 @@ var ShoutboxEntryListEdit = Class.create({
 	
 	/**
 	 * Returns a list of the edit options for the edit marked menu.
+	 * 
+	 * @return	Array
 	 */
 	getEditMarkedOptions: function() {
 		var options = new Array();
@@ -77,6 +87,8 @@ var ShoutboxEntryListEdit = Class.create({
 	
 	/**
 	 * Returns the title of the edit marked menu.
+	 * 
+	 * @return	string
 	 */
 	getMarkedTitle: function() {
 		return eval(language['wcf.shoutbox.markedEntries']);
@@ -105,8 +117,9 @@ var ShoutboxEntryListEdit = Class.create({
 		for (var i = 0; i < entryIDArray.length; i++) {
 			var id = entryIDArray[i];
 			var entry = this.data.get(id);
-		
+			
 			entry.isMarked = 0;
+			
 			var checkbox = $('shoutboxEntryMark'+id);
 			if (checkbox) {
 				checkbox.checked = false;

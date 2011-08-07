@@ -15,11 +15,11 @@ require_once(WCF_DIR.'lib/page/AbstractPage.class.php');
  */
 class ShoutboxEntryXMLListPage extends AbstractPage {
 	/**
-	 * last update time
+	 * last entry id
 	 * 
 	 * @var integer
 	 */
-	public $time = 0;
+	public $entryID = 0;
 	
 	/**
 	 * shoutbox entry factory object
@@ -41,7 +41,7 @@ class ShoutboxEntryXMLListPage extends AbstractPage {
 	public function readParameters() {
 		parent::readParameters();
 		
-		if (isset($_REQUEST['time'])) $this->time = intval($_REQUEST['time']);
+		if (isset($_REQUEST['entryID'])) $this->entryID = intval($_REQUEST['entryID']);
 	}
 	
 	/**
@@ -52,7 +52,7 @@ class ShoutboxEntryXMLListPage extends AbstractPage {
 		
 		// init shoutbox entry factory
 		$this->factory = new ShoutboxEntryFactory(false);
-		$this->factory->entryList->sqlConditions = 'time > '.$this->time;
+		$this->factory->entryList->sqlConditions = 'entryID > '.$this->entryID;
 		$this->factory->init();
 		
 		// get shoutbox entries

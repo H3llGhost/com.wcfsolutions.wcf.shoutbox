@@ -6,10 +6,13 @@
 var Shoutbox = Class.create({
 	/**
 	 * Inits Shoutbox.
+	 * 
+	 * @param	string		shoutboxID
+	 * @param	Hash		entries
 	 */
-	initialize: function(shoutboxID, entries, lastUpdateTime) {
+	initialize: function(shoutboxID, entries) {
 		this.shoutboxID = shoutboxID;
-		this.lastUpdateTime = lastUpdateTime;
+		this.lastEntryID = 0;
 		this.standby = false;
 		this.options = Object.extend({
 			langDeleteEntry:	'',
@@ -52,7 +55,7 @@ var Shoutbox = Class.create({
 	 */
 	startEntryUpdate: function() {
 		if (this.options.entryReloadInterval != 0) {
-			this.executer = new PeriodicalExecuter(function() { this.loadEntries(this.lastUpdateTime); }.bind(this), this.options.entryReloadInterval);
+			this.executer = new PeriodicalExecuter(function() { this.loadEntries(); }.bind(this), this.options.entryReloadInterval);
 		}
 	},
 	
@@ -91,7 +94,9 @@ var Shoutbox = Class.create({
 	},
 	
 	/**
-	 * Inserts a smiley.
+	 * Inserts a smiley with the given code.
+	 * 
+	 * @param	string		code
 	 */
 	insertSmiley: function(code) {
 		var messageInputField = $(this.shoutboxID+'Message');
@@ -119,6 +124,9 @@ var Shoutbox = Class.create({
 			username = usernameInputField.value;
 		}
 		
+		// stop entry update
+		this.stopEntryUpdate();
+		
 		// add entry
 		new Ajax.Request('index.php?action=ShoutboxEntryAdd'+SID_ARG_2ND, {
 			method: 'post',
@@ -132,28 +140,26 @@ var Shoutbox = Class.create({
 				if (messageInputField) {
 					messageInputField.value = '';
 					messageInputField.focus();
-				}				
-				
-				// stop update
-				this.stopEntryUpdate();
+				}
 				
 				// update entries
-				this.loadEntries(this.lastUpdateTime);
+				this.loadEntries();
 				
 				// stop standby
 				this.stopStandby();
-				
-				// restart entry update
-				this.startEntryUpdate();
 			}.bind(this, messageInputField),
 			onFailure: function(response) {
-				alert(response.responseText);
+				// workaround: js does not support html-entities
+				var error = new Element('textarea').update(response.responseText).getValue();
+				alert(error);
 			}
 		});
 	},
 	
 	/**
 	 * Deletes an entry.
+	 * 
+	 * @param	integer		id
 	 */	
 	deleteEntry: function(id) {
 		new Ajax.Request('index.php?action=ShoutboxEntryDelete&t='+SECURITY_TOKEN+SID_ARG_2ND, {
@@ -178,14 +184,17 @@ var Shoutbox = Class.create({
 	/**
 	 * Loads the new entries and inserts them.
 	 */
-	loadEntries: function(time) {
+	loadEntries: function() {
+		// stop entry update
+		this.stopEntryUpdate();
+		
 		// start request
 		new Ajax.Request('index.php?page=ShoutboxEntryXMLList&t='+SECURITY_TOKEN+SID_ARG_2ND, {
 			method: 'post',
 			parameters: {
-				time: time
+				entryID: this.lastEntryID
 			},
-			onSuccess: function(response) {			
+			onSuccess: function(response) {				
 				// get entries
 				var entries = response.responseXML.getElementsByTagName('entries');
 				if (entries.length > 0) {
@@ -193,34 +202,36 @@ var Shoutbox = Class.create({
 						this.unneededUpdates++;
 						if (this.options.unneededUpdateLimit != 0 && this.unneededUpdates >= this.options.unneededUpdateLimit) {
 							this.startStandby();
-							this.stopEntryUpdate();
-						}
-						return;
-					}
-					var newEntries = new Hash();
-					for (var i = 0; i < entries[0].childNodes.length; i++) {
-						newEntries.set(entries[0].childNodes[i].childNodes[0].childNodes[0].nodeValue, {
-							userID: entries[0].childNodes[i].childNodes[1].childNodes[0].nodeValue,
-							username: entries[0].childNodes[i].childNodes[2].childNodes[0].nodeValue,
-							time: entries[0].childNodes[i].childNodes[4].childNodes[0].nodeValue,
-							message: entries[0].childNodes[i].childNodes[5].childNodes[0].nodeValue,
-							isDeletable: entries[0].childNodes[i].childNodes[6].childNodes[0].nodeValue
-						});
-						
-						// set last update time
-						if (i == entries[0].childNodes.length - 1) {
-							this.lastUpdateTime = entries[0].childNodes[i].childNodes[3].childNodes[0].nodeValue;
+							return;
 						}
 					}
-					this.unneededUpdates = 0;
-					this.insertEntries(newEntries, true);
+					else {
+						var newEntries = new Hash();
+						for (var i = 0; i < entries[0].childNodes.length; i++) {
+							newEntries.set(entries[0].childNodes[i].childNodes[0].childNodes[0].nodeValue, {
+								userID: entries[0].childNodes[i].childNodes[1].childNodes[0].nodeValue,
+								username: entries[0].childNodes[i].childNodes[2].childNodes[0].nodeValue,
+								time: entries[0].childNodes[i].childNodes[4].childNodes[0].nodeValue,
+								message: entries[0].childNodes[i].childNodes[5].childNodes[0].nodeValue,
+								isDeletable: entries[0].childNodes[i].childNodes[6].childNodes[0].nodeValue
+							});
+						}
+						this.unneededUpdates = 0;
+						this.insertEntries(newEntries, true);
+					}
 				}
+				
+				// restart entry update
+				this.startEntryUpdate();
 			}.bind(this)
 		});
 	},
 	
 	/**
 	 * Inserts the given entries into the shoutbox.
+	 * 
+	 * @param	Hash		entries
+	 * @param	boolean		animate
 	 */
 	insertEntries: function(entries, animate) {
 		var shoutboxMessageDiv = $(this.shoutboxID+'Content');
@@ -231,6 +242,10 @@ var Shoutbox = Class.create({
 				for (var i = 0; i < idArray.length; i++) {
 					var id = idArray[i];
 					var entry = entries.get(id);
+					
+					// check if entry already exists
+					// find a better solution for this
+					if ($(this.shoutboxID+'Entry'+id)) continue;
 					
 					// create entry row
 					var time = new Element('span').addClassName('light').update('['+entry.time+']');
@@ -270,6 +285,9 @@ var Shoutbox = Class.create({
 							shoutboxEntryDiv.show();
 						}
 					}
+					
+					// set last entry id
+					this.lastEntryID = id;
 				}
 				
 				// focus last entry

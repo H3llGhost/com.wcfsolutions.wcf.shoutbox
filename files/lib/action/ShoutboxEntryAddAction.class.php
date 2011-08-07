@@ -119,12 +119,6 @@ class ShoutboxEntryAddAction extends AbstractAction {
 		
 		// add shoutbox entry
 		$this->entry = ShoutboxEntryEditor::create(WCF::getUser()->userID, $this->username, $this->message);
-		
-		// update activity points
-		if (ACTIVITY_POINTS_PER_SHOUTBOX_ENTRY && WCF::getUser()->userID) {
-			require_once(WCF_DIR.'lib/data/user/rank/UserRank.class.php');
-			UserRank::updateActivityPoints(ACTIVITY_POINTS_PER_SHOUTBOX_ENTRY);
-		}
 		$this->executed();
 		
 		// forward
