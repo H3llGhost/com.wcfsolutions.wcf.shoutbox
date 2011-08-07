@@ -3,8 +3,8 @@
 	<packageinformation>
 		<packagename>Shoutbox Support</packagename>
 		<isunique>1</isunique>
-		<version>2.0.0</version>
-		<date>2011-05-07</date>
+		<version>2.0.1</version>
+		<date>2011-08-07</date>
 	</packageinformation>
 	
 	<authorinformation>
@@ -50,17 +50,10 @@
 		<languages languagecode="en">en.xml</languages>
 	</instructions>
 	
-	<instructions type="update" fromversion="2.0.0 RC 2">
+	<instructions type="update" fromversion="2.0.0">
 		<!-- files -->
 		<files>files.tar</files>
-			
-		<!-- config -->
-		<options>options.xml</options>
-		
-		<!-- languages -->
-		<languages languagecode="de">de.xml</languages>
-		<languages languagecode="de-informal">de-informal.xml</languages>
-		<languages languagecode="en">en.xml</languages>
+		<script>acp/update_shoutbox.php</script>
 	</instructions>
 	
 	<instructions type="update" fromversion="1.0.2 pl 1">
