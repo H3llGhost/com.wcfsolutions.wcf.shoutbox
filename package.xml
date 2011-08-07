@@ -53,6 +53,7 @@
 	<instructions type="update" fromversion="2.0.0">
 		<!-- files -->
 		<files>files.tar</files>
+		<templates>templates.tar</templates>
 		<script>acp/update_shoutbox.php</script>
 	</instructions>
 	
